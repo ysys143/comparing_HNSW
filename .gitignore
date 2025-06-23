@@ -11,3 +11,6 @@ __pycache__/
 
 # Claude
 .claude/
+
+# Ignore all content in the sourcecode directory
+sourcecode/
