@@ -92,7 +92,7 @@ class QuantizedVectorPipeline:
         # 8-bit scalar quantization example
         min_vals = vectors.min(axis=1, keepdims=True)
         max_vals = vectors.max(axis=1, keepdims=True)
-        
+
         # Quantize to 8-bit, then convert back to float32 for Chroma
         quantized = ((vectors - min_vals) / (max_vals - min_vals) * 255).astype(np.uint8)
         return (quantized.astype(np.float32) / 255.0 * (max_vals - min_vals) + min_vals)
@@ -410,7 +410,7 @@ class QuantizationQualityAssessment:
         for i, query in enumerate(test_queries):
             original_results = original_collection.query(query_embeddings=[query], n_results=10)
             quantized_results = quantized_collection.query(query_embeddings=[query], n_results=10)
-            
+        
             # Calculate recall@k
             recall = self._calculate_recall(original_results, quantized_results)
             results[f"query_{i}"] = recall

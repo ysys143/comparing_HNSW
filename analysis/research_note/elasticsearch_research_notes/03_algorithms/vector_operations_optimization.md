@@ -73,7 +73,7 @@ long maskBits = Long.reverse((long) BitUtil.VH_BE_LONG.get(d, i / 8));
 // 7-bit quantization removing sign bit from 8-bit
 if (qValues.getScalarQuantizer().getBits() != 7) {
     return delegate.getRandomVectorScorerSupplier(sim, values);
-}
+        }
 // Native acceleration through VectorScorerFactory
 var scorer = factory.getInt7SQVectorScorerSupplier(...)
 ```
@@ -107,7 +107,7 @@ if (shouldUseDirectIO(state) && state.context.context() == IOContext.Context.DEF
 } else {
     // Merge: mmap optimization  
     return new Lucene99FlatVectorsReader(state, vectorsScorer);
-}
+            }
 ```
 
 **Cache-friendly access**:

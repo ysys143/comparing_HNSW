@@ -30,7 +30,7 @@ HalfvecL2SquaredDistanceF16c(int dim, half * ax, half * bx)
     float s[8];
     int count = (dim / 8) * 8;
     __m256 dist = _mm256_setzero_ps();
-
+    
     for (i = 0; i < count; i += 8)
     {
         __m128i axi = _mm_loadu_si128((__m128i *) (ax + i));
@@ -50,7 +50,7 @@ HalfvecL2SquaredDistanceF16c(int dim, half * ax, half * bx)
         float diff = HalfToFloat4(ax[i]) - HalfToFloat4(bx[i]);
         distance += diff * diff;
     }
-
+    
     return distance;
 }
 ```
@@ -62,7 +62,7 @@ TARGET_AVX512_POPCOUNT static uint64
 BitHammingDistanceAvx512Popcount(uint32 bytes, unsigned char *ax, unsigned char *bx, uint64 distance)
 {
     __m512i dist = _mm512_setzero_si512();
-
+    
     for (; bytes >= sizeof(__m512i); bytes -= sizeof(__m512i))
     {
         __m512i axs = _mm512_loadu_si512((const __m512i *) ax);
@@ -167,7 +167,7 @@ VECTOR_TARGET_CLONES static float
 VectorL2SquaredDistance(int dim, float *ax, float *bx)
 {
     float distance = 0.0;
-
+    
     /* Auto-vectorized by compiler */
     for (int i = 0; i < dim; i++)
     {
@@ -220,12 +220,12 @@ HnswInsertTuple(HnswBuildState *buildstate, HnswElement element)
 // Clustering with optimized distance computation
 static void
 IvfflatBuildTuples(IvfflatBuildState *buildstate)
-{
+    {
     // K-means clustering with SIMD-optimized distances
     // Automatic use of hardware acceleration when available
     
     for (int i = 0; i < buildstate->tuples->len; i++)
-    {
+        {
         // Optimized distance computation
         distance = (*buildstate->distanceFunc)(dim, tuple->vec, centroid);
     }

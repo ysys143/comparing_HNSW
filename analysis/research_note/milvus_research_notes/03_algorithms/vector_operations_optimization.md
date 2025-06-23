@@ -59,8 +59,8 @@ public:
         if (data == MAP_FAILED) {
             close(fd);
             return nullptr;
-        }
-        
+}
+
         // Apply memory advice based on access pattern
         ApplyMemoryAdvice(data, size, readonly);
         
@@ -144,9 +144,9 @@ public:
         for (int device_id : gpu_devices_) {
             cudaSetDevice(device_id);
             InitializeDevicePool(device_id);
-        }
     }
-    
+}
+
     void* AllocateGpuMemory(size_t size, cudaStream_t stream = nullptr) {
         std::lock_guard<std::mutex> lock(pool_mutex_);
         
@@ -163,11 +163,11 @@ public:
         // Allocate new block if pool not full
         if (GetTotalAllocatedSize() + size <= max_pool_size_) {
             return AllocateNewBlock(size, stream);
-        }
+    }
         
         // Try garbage collection
         GarbageCollect();
-        
+    
         // Retry allocation
         for (auto& block : memory_blocks_) {
             if (!block->in_use && block->size >= size) {
@@ -183,7 +183,7 @@ public:
         cudaError_t error = cudaMalloc(&device_ptr, size);
         if (error != cudaSuccess) {
             return nullptr;
-        }
+    }
         
         return device_ptr;
     }
@@ -218,7 +218,7 @@ public:
             if (used_memory < min_memory_usage) {
                 min_memory_usage = used_memory;
                 best_gpu = device_id;
-            }
+        }
         }
         
         return best_gpu;
@@ -331,7 +331,7 @@ public:
     void TriggerSpatialPrefetch(const std::string& accessed_key) {
         // Identify spatially related data
         auto related_keys = IdentifyRelatedKeys(accessed_key);
-        
+            
         for (const auto& related_key : related_keys) {
             if (cache_.find(related_key) == cache_.end()) {
                 // Asynchronously prefetch related data

@@ -180,7 +180,7 @@ Avx2Accelerator::squaredEuclideanDistance(const int8_t * a, const int8_t * b, si
 double calc(TypedCells rhs) const noexcept override {
     // ...
     return (double) vespalib::binary_hamming_distance(_lhs_vector.data(), rhs_vector.data(), sz);
-}
+            }
 ```
 
 ### Weaviate: Product Quantization Focus

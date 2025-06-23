@@ -22,7 +22,9 @@
       "Bash(python -m pytest tests/test_isolation.py -k \"pgvector\" -v --tb=short -x)",
       "Bash(python -m pytest tests/test_isolation.py --collect-only)",
       "Bash(curl:*)",
-      "Bash(PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python python scenarios/test_atomicity_proper.py)"
+      "Bash(PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python python scenarios/test_atomicity_proper.py)",
+      "Bash(cp:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

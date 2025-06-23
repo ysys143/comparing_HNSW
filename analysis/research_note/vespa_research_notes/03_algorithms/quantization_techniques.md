@@ -56,7 +56,7 @@ int64_t
 Avx2Accelerator::dotProduct(const int8_t * a, const int8_t * b, size_t sz) const noexcept
 {
     return helper::multiplyAdd(a, b, sz);
-}
+            }
 ```
 
 ### 1.2. Binary Quantization (for Hamming Distance)

@@ -121,12 +121,12 @@ public:
                                                            quantization_errors);
         refine_quantizer_->train(high_error_samples.data(), 
                                high_error_samples.size() / d, d);
-    }
-    
+        }
+        
     void encode_with_refinement(const float* data, uint8_t* codes, 
                               size_t n, size_t d) {
         // Parallel encoding with refinement
-        #pragma omp parallel for
+            #pragma omp parallel for
         for (size_t i = 0; i < n; ++i) {
             const float* vec = data + i * d;
             uint8_t* code = codes + i * code_size_;
@@ -198,7 +198,7 @@ public:
             __m256 scaled = _mm256_div_ps(
                 _mm256_sub_ps(vec, zero_point), scale);
             __m256 rounded = _mm256_round_ps(scaled, _MM_FROUND_TO_NEAREST_INT);
-            
+                
             // Clamp to [-128, 127]
             __m256 clamped = _mm256_max_ps(
                 _mm256_min_ps(rounded, _mm256_set1_ps(127.0f)),
@@ -303,8 +303,8 @@ public:
             if (score > best_score) {
                 best_score = score;
                 best_type = strategy.type;
-            }
-        }
+    }
+}
         
         return best_type;
     }
@@ -367,7 +367,7 @@ public:
             // Quantize batch
             quantize_batch(batch_buffer.data(), quantized_buffer.data(),
                           read_count, dim_);
-            
+    
             // Write quantized data
             output.write(reinterpret_cast<char*>(quantized_buffer.data()),
                         read_count * quantized_dim_);

@@ -556,6 +556,8 @@ find . -name "*.py" | grep -E "(vector|chroma)" | head -10  # Chroma
 - [Vespa Documentation](https://docs.vespa.ai/)
 - [Weaviate Documentation](https://weaviate.io/developers/weaviate)
 
+### Notebook LM
+- [Google NotebookLM](https://notebooklm.google.com/notebook/bbf9e0f5-26c4-45a6-8cb6-933450a718f9/audio)
 
 ### AI 도구 활용 연구
 
