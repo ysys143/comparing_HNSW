@@ -1,0 +1,58 @@
+{
+  "test_name": "proper_atomicity_test",
+  "timestamp": "2025-06-23T12:57:48.206953",
+  "results": {
+    "pgvector": {
+      "transactional_atomicity": {
+        "rollback_successful": true,
+        "vectors_rolled_back": 100
+      },
+      "supports_transactions": true
+    },
+    "qdrant": {
+      "best_effort_behavior": {
+        "behavior": "best_effort_partial_success",
+        "vectors_attempted": 100,
+        "vectors_inserted": 10,
+        "invalid_position": 50,
+        "error_message": null
+      },
+      "partial_failure": {
+        "partial_success": true,
+        "vectors_added": 99,
+        "duplicate_position": 50
+      },
+      "supports_transactions": false
+    },
+    "milvus": {
+      "best_effort_behavior": {
+        "behavior": "all_or_nothing_validation",
+        "vectors_attempted": 100,
+        "vectors_inserted": 0,
+        "invalid_position": 50,
+        "error_message": null
+      },
+      "partial_failure": {
+        "partial_success": false,
+        "vectors_added": 100,
+        "duplicate_position": 50
+      },
+      "supports_transactions": false
+    },
+    "chroma": {
+      "best_effort_behavior": {
+        "behavior": "all_or_nothing_validation",
+        "vectors_attempted": 100,
+        "vectors_inserted": 0,
+        "invalid_position": 50,
+        "error_message": null
+      },
+      "partial_failure": {
+        "partial_success": true,
+        "vectors_added": 99,
+        "duplicate_position": 50
+      },
+      "supports_transactions": false
+    }
+  }
+}

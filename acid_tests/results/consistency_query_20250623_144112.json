@@ -1,0 +1,110 @@
+{
+  "test": "consistency_query_results",
+  "timestamp": "20250623_144112",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "query_result_consistency",
+      "tests": {
+        "read_after_write": {
+          "status": "\u2713",
+          "message": "Perfect read-after-write consistency"
+        },
+        "query_during_updates": {
+          "status": "\u2717",
+          "message": "Unstable results (avg 0.0/10 overlap)"
+        },
+        "stale_reads": {
+          "status": "\u2713",
+          "message": "No stale reads detected after deletion"
+        }
+      },
+      "summary": {
+        "total_tests": 3,
+        "passed": 2,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "query_result_consistency",
+      "tests": {
+        "read_after_write": {
+          "status": "\u2713",
+          "message": "Perfect read-after-write consistency"
+        },
+        "query_during_updates": {
+          "status": "\u26a0",
+          "message": "Moderate stability (avg 5.3/10 overlap, 6 order changes)"
+        },
+        "concurrent_reads": {
+          "status": "\u2713",
+          "message": "All concurrent reads returned identical results"
+        },
+        "stale_reads": {
+          "status": "\u2713",
+          "message": "No stale reads detected after deletion"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 3,
+        "partial": 1,
+        "failed": 0,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "query_result_consistency",
+      "tests": {
+        "read_after_write": {
+          "status": "\u2713",
+          "message": "Perfect read-after-write consistency"
+        },
+        "query_during_updates": {
+          "status": "\u2713",
+          "message": "Stable results during updates (avg 9.0/10 overlap)"
+        },
+        "concurrent_reads": {
+          "status": "\u2713",
+          "message": "All concurrent reads returned identical results"
+        },
+        "stale_reads": {
+          "status": "\u2713",
+          "message": "No stale reads detected after deletion"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 4,
+        "partial": 0,
+        "failed": 0,
+        "overall_status": "\u2713"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "query_result_consistency",
+      "tests": {
+        "read_after_write": {
+          "status": "\u2717",
+          "message": "Only 0/10 exact matches"
+        },
+        "stale_reads": {
+          "status": "N/A",
+          "message": "No vectors to delete - insertion failed"
+        }
+      },
+      "summary": {
+        "total_tests": 1,
+        "passed": 0,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    }
+  ]
+}

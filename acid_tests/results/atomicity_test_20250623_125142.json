@@ -1,0 +1,70 @@
+{
+  "test_name": "atomicity_test",
+  "timestamp": "2025-06-23T12:51:42.428316",
+  "results": {
+    "pgvector": {
+      "batch_atomicity": {
+        "atomic": true,
+        "vectors_attempted": 10000,
+        "vectors_added": 0,
+        "partial_success": false,
+        "error_message": null,
+        "supports_transactions": true,
+        "duplicate_behavior": null
+      },
+      "update_atomicity": {
+        "success_count": 20,
+        "error_count": 0,
+        "final_version": null
+      }
+    },
+    "qdrant": {
+      "batch_atomicity": {
+        "atomic": true,
+        "vectors_attempted": 10000,
+        "vectors_added": 0,
+        "partial_success": false,
+        "error_message": null,
+        "supports_transactions": false,
+        "duplicate_behavior": null
+      },
+      "update_atomicity": {
+        "success_count": 20,
+        "error_count": 0,
+        "final_version": null
+      }
+    },
+    "milvus": {
+      "batch_atomicity": {
+        "atomic": false,
+        "vectors_attempted": 10000,
+        "vectors_added": 10000,
+        "partial_success": false,
+        "error_message": null,
+        "supports_transactions": false,
+        "duplicate_behavior": "first_write_wins"
+      },
+      "update_atomicity": {
+        "success_count": 20,
+        "error_count": 0,
+        "final_version": 19
+      }
+    },
+    "chroma": {
+      "batch_atomicity": {
+        "atomic": true,
+        "vectors_attempted": 10000,
+        "vectors_added": 0,
+        "partial_success": false,
+        "error_message": null,
+        "supports_transactions": false,
+        "duplicate_behavior": null
+      },
+      "update_atomicity": {
+        "success_count": 20,
+        "error_count": 0,
+        "final_version": null
+      }
+    }
+  }
+}

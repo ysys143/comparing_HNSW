@@ -1,0 +1,128 @@
+{
+  "test": "consistency_index_synchronization",
+  "timestamp": "20250623_135650",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2717",
+          "message": "Vector not immediately searchable"
+        },
+        "load_visibility": {
+          "status": "\u2717",
+          "message": "No vectors became searchable under load"
+        },
+        "bulk_visibility": {
+          "status": "\u2717",
+          "message": "No sampled vectors became searchable"
+        },
+        "search_consistency": {
+          "status": "\u2717",
+          "message": "Search results only 0% consistent"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 0,
+        "partial": 0,
+        "failed": 4,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2717",
+          "message": "Vector not immediately searchable"
+        },
+        "load_visibility": {
+          "status": "\u2717",
+          "message": "No vectors became searchable under load"
+        },
+        "bulk_visibility": {
+          "status": "\u2717",
+          "message": "No sampled vectors became searchable"
+        },
+        "search_consistency": {
+          "status": "\u2717",
+          "message": "Search results only 0% consistent"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 0,
+        "partial": 0,
+        "failed": 4,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2713",
+          "message": "Vector immediately searchable after insert"
+        },
+        "load_visibility": {
+          "status": "\u2713",
+          "message": "All vectors searchable. Avg delay: 3.034s, Max: 3.398s",
+          "details": {
+            "visible_count": 20,
+            "missing_count": 0,
+            "avg_delay_ms": 3034,
+            "max_delay_ms": 3397
+          }
+        },
+        "bulk_visibility": {
+          "status": "\u2713",
+          "message": "All sampled vectors searchable. Avg time: 3.595s"
+        },
+        "search_consistency": {
+          "status": "\u2713",
+          "message": "Search results remain consistent during inserts"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 4,
+        "partial": 0,
+        "failed": 0,
+        "overall_status": "\u2713"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2717",
+          "message": "Vector not immediately searchable"
+        },
+        "load_visibility": {
+          "status": "\u2717",
+          "message": "No vectors became searchable under load"
+        },
+        "bulk_visibility": {
+          "status": "\u2717",
+          "message": "No sampled vectors became searchable"
+        },
+        "search_consistency": {
+          "status": "\u2717",
+          "message": "Search results only 0% consistent"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 0,
+        "partial": 0,
+        "failed": 4,
+        "overall_status": "\u2717"
+      }
+    }
+  ]
+}

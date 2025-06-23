@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consistency Test Report - Metadata Consistency</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .pass { color: green; }
+        .partial { color: orange; }
+        .fail { color: red; }
+        .na { color: gray; }
+        h3 { margin-top: 30px; }
+        ul { margin: 10px 0; }
+        .details { background-color: #f9f9f9; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Consistency Test Report - Metadata Consistency</h1>
+    <p>Generated: 2025-06-23 15:02:40</p>
+    <p><strong>Test notation:</strong> ✓ = no inconsistency observed, ⚠ = partial inconsistency or delay, ✗ = unstable or broken behavior</p>
+    
+    <h2>Summary</h2>
+    <table>
+        <tr>
+            <th>Database</th>
+            <th>Overall Status</th>
+            <th>Passed</th>
+            <th>Partial</th>
+            <th>Failed</th>
+            <th>Details</th>
+        </tr>
+
+        <tr>
+            <td>pgvector</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>3</td>
+            <td>1/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>qdrant</td>
+            <td><span class="partial">⚠</span></td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>milvus</td>
+            <td><span class="partial">⚠</span></td>
+            <td>3</td>
+            <td>0</td>
+            <td>1</td>
+            <td>3/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>chroma</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>3</td>
+            <td>1/4 tests passed</td>
+        </tr>
+
+    </table>
+    
+    <h2>Detailed Results</h2>
+<h3>pgvector</h3><div class="details"><h4>Metadata Consistency Tests</h4><ul><li><strong>Single Update:</strong> <span class="fail">✗</span> - Metadata update failed or inconsistent</li><li><strong>Concurrent Updates:</strong> <span class="fail">✗</span> - Only 0/10 vectors have consistent metadata</li><li><strong>Search Metadata:</strong> <span class="pass">✓</span> - All metadata preserved in search results</li><li><strong>Type Consistency:</strong> <span class="fail">✗</span> - Only 0/5 metadata types preserved<ul><li>string: ✗</li><li>integer: ✗</li><li>float: ✗</li><li>boolean: ✗</li><li>nested: ✗</li></ul></li></ul></div><h3>qdrant</h3><div class="details"><h4>Metadata Consistency Tests</h4><ul><li><strong>Single Update:</strong> <span class="fail">✗</span> - Metadata update failed or inconsistent</li><li><strong>Concurrent Updates:</strong> <span class="pass">✓</span> - All 10 vectors have consistent metadata after concurrent updates</li><li><strong>Search Metadata:</strong> <span class="pass">✓</span> - All metadata preserved in search results</li><li><strong>Type Consistency:</strong> <span class="fail">✗</span> - Only 0/5 metadata types preserved<ul><li>string: ✗</li><li>integer: ✗</li><li>float: ✗</li><li>boolean: ✗</li><li>nested: ✗</li></ul></li></ul></div><h3>milvus</h3><div class="details"><h4>Metadata Consistency Tests</h4><ul><li><strong>Single Update:</strong> <span class="pass">✓</span> - Metadata update successful and consistent</li><li><strong>Concurrent Updates:</strong> <span class="fail">✗</span> - Only 1/10 vectors have consistent metadata</li><li><strong>Search Metadata:</strong> <span class="pass">✓</span> - All metadata preserved in search results</li><li><strong>Type Consistency:</strong> <span class="pass">✓</span> - All metadata types preserved correctly<ul><li>string: ✓</li><li>integer: ✓</li><li>float: ✓</li><li>boolean: ✓</li><li>nested: ✓</li></ul></li></ul></div><h3>chroma</h3><div class="details"><h4>Metadata Consistency Tests</h4><ul><li><strong>Single Update:</strong> <span class="fail">✗</span> - Metadata update failed or inconsistent</li><li><strong>Concurrent Updates:</strong> <span class="fail">✗</span> - Only 0/10 vectors have consistent metadata</li><li><strong>Search Metadata:</strong> <span class="pass">✓</span> - All metadata preserved in search results</li><li><strong>Type Consistency:</strong> <span class="fail">✗</span> - Only 0/5 metadata types preserved<ul><li>string: ✗</li><li>integer: ✗</li><li>float: ✗</li><li>boolean: ✗</li><li>nested: ✗</li></ul></li></ul></div>
+    <h2>Key Findings</h2>
+    <div class="details">
+        <h3>Metadata Consistency Patterns</h3>
+
+        <ol>
+            <li><strong>Update Support:</strong> Not all databases support direct metadata updates</li>
+            <li><strong>Concurrent Safety:</strong> Concurrent metadata updates may lead to inconsistencies</li>
+            <li><strong>Type Preservation:</strong> Data type handling varies across databases</li>
+        </ol>
+
+    </div>
+    
+    <h2>Technical Notes</h2>
+    <ul>
+        <li>All tests were run against locally deployed instances</li>
+        <li>Network latency and resource constraints may affect results</li>
+        <li>Results represent behavior at the time of testing</li>
+        <li>BASE systems showing ⚠ or ✗ may be operating as designed</li>
+    </ul>
+</body>
+</html>

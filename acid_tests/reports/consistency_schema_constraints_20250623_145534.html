@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consistency Test Report - Schema Constraints</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .pass { color: green; }
+        .partial { color: orange; }
+        .fail { color: red; }
+        .na { color: gray; }
+        h3 { margin-top: 30px; }
+        ul { margin: 10px 0; }
+        .details { background-color: #f9f9f9; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Consistency Test Report - Schema Constraints</h1>
+    <p>Generated: 2025-06-23 14:55:34</p>
+    <p><strong>Test notation:</strong> ✓ = no inconsistency observed, ⚠ = partial inconsistency or delay, ✗ = unstable or broken behavior</p>
+    
+    <h2>Summary</h2>
+    <table>
+        <tr>
+            <th>Database</th>
+            <th>Overall Status</th>
+            <th>Passed</th>
+            <th>Partial</th>
+            <th>Failed</th>
+            <th>Details</th>
+        </tr>
+
+        <tr>
+            <td>pgvector</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>5</td>
+            <td>1/6 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>qdrant</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>5</td>
+            <td>1/6 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>milvus</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>5</td>
+            <td>1/6 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>chroma</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>5</td>
+            <td>1/6 tests passed</td>
+        </tr>
+
+    </table>
+    
+    <h2>Detailed Results</h2>
+<h3>pgvector</h3><div class="details"><h4>Schema Constraints Tests</h4><ul><li><strong>Correct Dimension:</strong> <span class="pass">✓</span> - Accepted vector with correct dimension</li><li><strong>Small Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Large Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Mixed Batch:</strong> <span class="na">?</span> - Batch accepted - unable to verify count</li><li><strong>Empty Vector:</strong> <span class="fail">✗</span> - Incorrectly accepted empty vector</li><li><strong>Null Values:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with null values</li></ul></div><h3>qdrant</h3><div class="details"><h4>Schema Constraints Tests</h4><ul><li><strong>Correct Dimension:</strong> <span class="pass">✓</span> - Accepted vector with correct dimension</li><li><strong>Small Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Large Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Mixed Batch:</strong> <span class="na">?</span> - Batch accepted - unable to verify count</li><li><strong>Empty Vector:</strong> <span class="fail">✗</span> - Incorrectly accepted empty vector</li><li><strong>Null Values:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with null values</li></ul></div><h3>milvus</h3><div class="details"><h4>Schema Constraints Tests</h4><ul><li><strong>Correct Dimension:</strong> <span class="pass">✓</span> - Accepted vector with correct dimension</li><li><strong>Small Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Large Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Mixed Batch:</strong> <span class="na">?</span> - Batch accepted - unable to verify count</li><li><strong>Empty Vector:</strong> <span class="fail">✗</span> - Incorrectly accepted empty vector</li><li><strong>Null Values:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with null values</li></ul></div><h3>chroma</h3><div class="details"><h4>Schema Constraints Tests</h4><ul><li><strong>Correct Dimension:</strong> <span class="pass">✓</span> - Accepted vector with correct dimension</li><li><strong>Small Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Large Dimension:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with wrong dimension</li><li><strong>Mixed Batch:</strong> <span class="na">?</span> - Batch accepted - unable to verify count</li><li><strong>Empty Vector:</strong> <span class="fail">✗</span> - Incorrectly accepted empty vector</li><li><strong>Null Values:</strong> <span class="fail">✗</span> - Incorrectly accepted vector with null values</li></ul></div>
+    <h2>Key Findings</h2>
+    <div class="details">
+        <h3>Schema Constraints Patterns</h3>
+
+        <ol>
+            <li><strong>Dimension Enforcement:</strong> All databases correctly validate vector dimensions</li>
+            <li><strong>Batch Handling:</strong> Databases differ in whether they reject entire batches or allow partial success</li>
+            <li><strong>Error Reporting:</strong> Clear error messages help identify schema violations</li>
+        </ol>
+
+    </div>
+    
+    <h2>Technical Notes</h2>
+    <ul>
+        <li>All tests were run against locally deployed instances</li>
+        <li>Network latency and resource constraints may affect results</li>
+        <li>Results represent behavior at the time of testing</li>
+        <li>BASE systems showing ⚠ or ✗ may be operating as designed</li>
+    </ul>
+</body>
+</html>

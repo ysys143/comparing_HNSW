@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(jq:*)",
+      "Bash(python3:*)",
+      "Bash(brew install:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(claude mcp add context7 npx -- -y @upstash/context7-mcp@latest)",
+      "Bash(claude mcp:*)",
+      "Bash(grep:*)",
+      "Bash(for db in chroma elasticsearch milvus pgvector qdrant vespa weaviate)",
+      "Bash(do echo \"=== $db ===\")",
+      "Bash(done)",
+      "Bash(chmod:*)",
+      "Bash(source:*)",
+      "Bash(uv pip install:*)",
+      "Bash(python test_pgvector.py)",
+      "Bash(docker-compose:*)",
+      "Bash(python -m pytest tests/test_isolation.py -k \"pgvector\" -v --tb=short -x)",
+      "Bash(python -m pytest tests/test_isolation.py --collect-only)",
+      "Bash(curl:*)",
+      "Bash(PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python python scenarios/test_atomicity_proper.py)"
+    ],
+    "deny": []
+  }
+}

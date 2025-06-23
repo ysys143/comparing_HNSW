@@ -1,0 +1,113 @@
+version: '3.8'
+
+networks:
+  acid-test-net:
+    driver: bridge
+
+services:
+  # PostgreSQL with pgvector
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: acid-pgvector
+    environment:
+      POSTGRES_DB: vectordb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./data/pgvector:/var/lib/postgresql/data
+      - ./init/pgvector:/docker-entrypoint-initdb.d
+    networks:
+      - acid-test-net
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Qdrant
+  qdrant:
+    image: qdrant/qdrant:v1.7.4
+    container_name: acid-qdrant
+    ports:
+      - "16333:6333"
+      - "16334:6334"
+    volumes:
+      - ./data/qdrant:/qdrant/storage
+      - ./config/qdrant:/qdrant/config
+    environment:
+      QDRANT__SERVICE__GRPC_PORT: 6334
+      QDRANT__LOG_LEVEL: INFO
+    networks:
+      - acid-test-net
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Milvus Standalone (Simplified)
+  milvus:
+    image: milvusdb/milvus:v2.3.3
+    container_name: acid-milvus
+    command: ["milvus", "run", "standalone"]
+    environment:
+      ETCD_USE_EMBED: "true"
+      ETCD_DATA_DIR: "/var/lib/milvus/etcd"
+      COMMON_STORAGETYPE: "local"
+    ports:
+      - "19530:19530"
+      - "19121:9091"
+    volumes:
+      - ./data/milvus:/var/lib/milvus
+    networks:
+      - acid-test-net
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+          cpus: '4'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  # Chroma
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: acid-chroma
+    ports:
+      - "18000:8000"
+    volumes:
+      - ./data/chroma:/chroma/chroma
+      - ./config/chroma:/config
+    environment:
+      IS_PERSISTENT: "TRUE"
+      PERSIST_DIRECTORY: "/chroma/chroma"
+      ANONYMIZED_TELEMETRY: "FALSE"
+    networks:
+      - acid-test-net
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+

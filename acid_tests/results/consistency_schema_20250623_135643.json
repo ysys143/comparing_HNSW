@@ -1,0 +1,154 @@
+{
+  "test": "consistency_schema_constraints",
+  "timestamp": "20250623_135643",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2713",
+          "message": "Accepted vector with correct dimension"
+        },
+        "small_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "large_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "mixed_batch": {
+          "status": "?",
+          "message": "Batch accepted - unable to verify count"
+        },
+        "empty_vector": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted empty vector"
+        },
+        "null_values": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with null values"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 1,
+        "partial": 0,
+        "failed": 5,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2713",
+          "message": "Accepted vector with correct dimension"
+        },
+        "small_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "large_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "mixed_batch": {
+          "status": "?",
+          "message": "Batch accepted - unable to verify count"
+        },
+        "empty_vector": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted empty vector"
+        },
+        "null_values": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with null values"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 1,
+        "partial": 0,
+        "failed": 5,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2713",
+          "message": "Accepted vector with correct dimension"
+        },
+        "small_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "large_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "mixed_batch": {
+          "status": "?",
+          "message": "Batch accepted - unable to verify count"
+        },
+        "empty_vector": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted empty vector"
+        },
+        "null_values": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with null values"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 1,
+        "partial": 0,
+        "failed": 5,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2713",
+          "message": "Accepted vector with correct dimension"
+        },
+        "small_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "large_dimension": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with wrong dimension"
+        },
+        "mixed_batch": {
+          "status": "?",
+          "message": "Batch accepted - unable to verify count"
+        },
+        "empty_vector": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted empty vector"
+        },
+        "null_values": {
+          "status": "\u2717",
+          "message": "Incorrectly accepted vector with null values"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 1,
+        "partial": 0,
+        "failed": 5,
+        "overall_status": "\u2717"
+      }
+    }
+  ]
+}

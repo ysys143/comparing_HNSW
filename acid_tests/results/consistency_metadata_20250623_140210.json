@@ -1,0 +1,170 @@
+{
+  "test": "consistency_metadata",
+  "timestamp": "20250623_140210",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "metadata_consistency",
+      "tests": {
+        "single_update": {
+          "status": "\u2717",
+          "message": "Metadata update failed or inconsistent"
+        },
+        "concurrent_updates": {
+          "status": "\u2717",
+          "message": "Only 0/10 vectors have consistent metadata",
+          "issues": []
+        },
+        "search_metadata": {
+          "status": "\u2717",
+          "message": "Metadata not preserved in search results"
+        },
+        "type_consistency": {
+          "status": "\u2717",
+          "message": "Only 0/5 metadata types preserved",
+          "details": {
+            "string": "\u2717",
+            "integer": "\u2717",
+            "float": "\u2717",
+            "boolean": "\u2717",
+            "nested": "\u2717"
+          }
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 0,
+        "partial": 0,
+        "failed": 4,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "metadata_consistency",
+      "tests": {
+        "single_update": {
+          "status": "\u2717",
+          "message": "Metadata update failed or inconsistent"
+        },
+        "concurrent_updates": {
+          "status": "\u2717",
+          "message": "Only 0/10 vectors have consistent metadata",
+          "issues": []
+        },
+        "search_metadata": {
+          "status": "\u2717",
+          "message": "Metadata not preserved in search results"
+        },
+        "type_consistency": {
+          "status": "\u2717",
+          "message": "Only 0/5 metadata types preserved",
+          "details": {
+            "string": "\u2717",
+            "integer": "\u2717",
+            "float": "\u2717",
+            "boolean": "\u2717",
+            "nested": "\u2717"
+          }
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 0,
+        "partial": 0,
+        "failed": 4,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "metadata_consistency",
+      "tests": {
+        "single_update": {
+          "status": "\u2713",
+          "message": "Metadata update successful and consistent"
+        },
+        "concurrent_updates": {
+          "status": "\u2717",
+          "message": "Only 1/10 vectors have consistent metadata",
+          "issues": [
+            {
+              "vector": "concurrent-0",
+              "expected": 5,
+              "actual": 1
+            },
+            {
+              "vector": "concurrent-1",
+              "expected": 5,
+              "actual": 2
+            },
+            {
+              "vector": "concurrent-2",
+              "expected": 5,
+              "actual": 0
+            }
+          ]
+        },
+        "search_metadata": {
+          "status": "\u2713",
+          "message": "All metadata preserved in search results"
+        },
+        "type_consistency": {
+          "status": "\u2713",
+          "message": "All metadata types preserved correctly",
+          "details": {
+            "string": "\u2713",
+            "integer": "\u2713",
+            "float": "\u2713",
+            "boolean": "\u2713",
+            "nested": "\u2713"
+          }
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 3,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "metadata_consistency",
+      "tests": {
+        "single_update": {
+          "status": "\u2717",
+          "message": "Metadata update failed or inconsistent"
+        },
+        "concurrent_updates": {
+          "status": "\u2717",
+          "message": "Only 0/10 vectors have consistent metadata",
+          "issues": []
+        },
+        "search_metadata": {
+          "status": "\u2713",
+          "message": "All metadata preserved in search results"
+        },
+        "type_consistency": {
+          "status": "\u2717",
+          "message": "Only 0/5 metadata types preserved",
+          "details": {
+            "string": "\u2717",
+            "integer": "\u2717",
+            "float": "\u2717",
+            "boolean": "\u2717",
+            "nested": "\u2717"
+          }
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 1,
+        "partial": 0,
+        "failed": 3,
+        "overall_status": "\u2717"
+      }
+    }
+  ]
+}

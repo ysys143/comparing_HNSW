@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PROPER_ATOMICITY_TEST Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .pass { color: green; }
+        .fail { color: red; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>PROPER_ATOMICITY_TEST Test Report</h1>
+    <p>Generated: 2025-06-23 13:06:37</p>
+    
+    <h2>Summary</h2>
+    <table>
+        <tr>
+            <th>Database</th>
+            <th>Atomicity</th>
+            <th>Behavior</th>
+            <th>Details</th>
+        </tr>
+
+    </table>
+    
+    <h2>Detailed Results</h2>
+<h3>pgvector</h3><pre>{
+  "transactional_atomicity": {
+    "rollback_successful": true,
+    "vectors_rolled_back": 100
+  },
+  "supports_transactions": true
+}</pre><h3>qdrant</h3><pre>{
+  "best_effort_behavior": {
+    "behavior": "best_effort_partial_success",
+    "vectors_attempted": 100,
+    "vectors_inserted": 22,
+    "invalid_position": 50,
+    "error_message": null
+  },
+  "partial_failure": {
+    "partial_success": true,
+    "vectors_added": 99,
+    "duplicate_position": 50
+  },
+  "supports_transactions": false
+}</pre><h3>milvus</h3><pre>{
+  "best_effort_behavior": {
+    "behavior": "all_or_nothing_validation",
+    "vectors_attempted": 100,
+    "vectors_inserted": 0,
+    "invalid_position": 50,
+    "error_message": null
+  },
+  "partial_failure": {
+    "partial_success": false,
+    "vectors_added": 100,
+    "duplicate_position": 50
+  },
+  "supports_transactions": false
+}</pre><h3>chroma</h3><pre>{
+  "best_effort_behavior": {
+    "behavior": "all_or_nothing_validation",
+    "vectors_attempted": 100,
+    "vectors_inserted": 0,
+    "invalid_position": 50,
+    "error_message": null
+  },
+  "partial_failure": {
+    "partial_success": true,
+    "vectors_added": 99,
+    "duplicate_position": 50
+  },
+  "supports_transactions": false
+}</pre>
+</body>
+</html>

@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consistency Test Report - Index Synchronization</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .pass { color: green; }
+        .partial { color: orange; }
+        .fail { color: red; }
+        .na { color: gray; }
+        h3 { margin-top: 30px; }
+        ul { margin: 10px 0; }
+        .details { background-color: #f9f9f9; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Consistency Test Report - Index Synchronization</h1>
+    <p>Generated: 2025-06-23 14:59:30</p>
+    <p><strong>Test notation:</strong> ✓ = no inconsistency observed, ⚠ = partial inconsistency or delay, ✗ = unstable or broken behavior</p>
+    
+    <h2>Summary</h2>
+    <table>
+        <tr>
+            <th>Database</th>
+            <th>Overall Status</th>
+            <th>Passed</th>
+            <th>Partial</th>
+            <th>Failed</th>
+            <th>Details</th>
+        </tr>
+
+        <tr>
+            <td>pgvector</td>
+            <td><span class="fail">✗</span></td>
+            <td>1</td>
+            <td>0</td>
+            <td>3</td>
+            <td>1/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>qdrant</td>
+            <td><span class="partial">⚠</span></td>
+            <td>2</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>milvus</td>
+            <td><span class="pass">✓</span></td>
+            <td>4</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4/4 tests passed</td>
+        </tr>
+
+        <tr>
+            <td>chroma</td>
+            <td><span class="pass">✓</span></td>
+            <td>4</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4/4 tests passed</td>
+        </tr>
+
+    </table>
+    
+    <h2>Detailed Results</h2>
+<h3>pgvector</h3><div class="details"><h4>Index Synchronization Tests</h4><ul><li><strong>Immediate Visibility:</strong> <span class="fail">✗</span> - Vector not immediately searchable</li><li><strong>Load Visibility:</strong> <span class="fail">✗</span> - 19/20 vectors not searchable<ul><li>visible_count: 1</li><li>missing_count: 19</li><li>avg_delay_ms: 3</li><li>max_delay_ms: 3</li></ul></li><li><strong>Bulk Visibility:</strong> <span class="pass">✓</span> - All sampled vectors searchable. Avg time: 0.062s</li><li><strong>Search Consistency:</strong> <span class="fail">✗</span> - Search results only 0% consistent</li></ul></div><h3>qdrant</h3><div class="details"><h4>Index Synchronization Tests</h4><ul><li><strong>Immediate Visibility:</strong> <span class="fail">✗</span> - Vector not immediately searchable</li><li><strong>Load Visibility:</strong> <span class="pass">✓</span> - All vectors searchable. Avg delay: 0.002s, Max: 0.003s<ul><li>visible_count: 20</li><li>missing_count: 0</li><li>avg_delay_ms: 1</li><li>max_delay_ms: 3</li></ul></li><li><strong>Bulk Visibility:</strong> <span class="pass">✓</span> - All sampled vectors searchable. Avg time: 0.035s</li><li><strong>Search Consistency:</strong> <span class="fail">✗</span> - Search results only 0% consistent</li></ul></div><h3>milvus</h3><div class="details"><h4>Index Synchronization Tests</h4><ul><li><strong>Immediate Visibility:</strong> <span class="pass">✓</span> - Vector immediately searchable after insert</li><li><strong>Load Visibility:</strong> <span class="pass">✓</span> - All vectors searchable. Avg delay: 3.040s, Max: 3.402s<ul><li>visible_count: 20</li><li>missing_count: 0</li><li>avg_delay_ms: 3039</li><li>max_delay_ms: 3402</li></ul></li><li><strong>Bulk Visibility:</strong> <span class="pass">✓</span> - All sampled vectors searchable. Avg time: 3.202s</li><li><strong>Search Consistency:</strong> <span class="pass">✓</span> - Search results remain consistent during inserts</li></ul></div><h3>chroma</h3><div class="details"><h4>Index Synchronization Tests</h4><ul><li><strong>Immediate Visibility:</strong> <span class="pass">✓</span> - Vector immediately searchable after insert</li><li><strong>Load Visibility:</strong> <span class="pass">✓</span> - All vectors searchable. Avg delay: 0.006s, Max: 0.009s<ul><li>visible_count: 20</li><li>missing_count: 0</li><li>avg_delay_ms: 6</li><li>max_delay_ms: 8</li></ul></li><li><strong>Bulk Visibility:</strong> <span class="pass">✓</span> - All sampled vectors searchable. Avg time: 0.026s</li><li><strong>Search Consistency:</strong> <span class="pass">✓</span> - Search results remain consistent during inserts</li></ul></div>
+    <h2>Key Findings</h2>
+    <div class="details">
+        <h3>Index Synchronization Patterns</h3>
+
+        <ol>
+            <li><strong>Immediate Visibility:</strong> Most databases show good immediate visibility for single inserts</li>
+            <li><strong>Load Impact:</strong> High insert loads can cause visibility delays</li>
+            <li><strong>Consistency Trade-offs:</strong> Some databases prioritize write speed over immediate consistency</li>
+        </ol>
+
+    </div>
+    
+    <h2>Technical Notes</h2>
+    <ul>
+        <li>All tests were run against locally deployed instances</li>
+        <li>Network latency and resource constraints may affect results</li>
+        <li>Results represent behavior at the time of testing</li>
+        <li>BASE systems showing ⚠ or ✗ may be operating as designed</li>
+    </ul>
+</body>
+</html>

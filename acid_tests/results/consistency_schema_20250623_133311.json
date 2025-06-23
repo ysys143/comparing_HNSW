@@ -1,0 +1,154 @@
+{
+  "test": "consistency_schema_constraints",
+  "timestamp": "20250623_133311",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2717",
+          "message": "Rejected correct dimension: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "small_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "large_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "mixed_batch": {
+          "status": "\u2713",
+          "message": "Correctly rejected entire batch: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "empty_vector": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        },
+        "null_values": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 5,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2717",
+          "message": "Rejected correct dimension: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "small_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "large_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "mixed_batch": {
+          "status": "\u2713",
+          "message": "Correctly rejected entire batch: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "empty_vector": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        },
+        "null_values": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 5,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2717",
+          "message": "Rejected correct dimension: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "small_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "large_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "mixed_batch": {
+          "status": "\u2713",
+          "message": "Correctly rejected entire batch: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "empty_vector": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        },
+        "null_values": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 5,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "schema_constraint_validation",
+      "tests": {
+        "correct_dimension": {
+          "status": "\u2717",
+          "message": "Rejected correct dimension: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "small_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "large_dimension": {
+          "status": "\u2713",
+          "message": "Correctly rejected: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "mixed_batch": {
+          "status": "\u2713",
+          "message": "Correctly rejected entire batch: 'int' object has no attribute '_generate_random_vector'"
+        },
+        "empty_vector": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        },
+        "null_values": {
+          "status": "\u2713",
+          "message": "Correctly rejected: cannot import name 'Vector' from 'clients.base_client' (/Users/jaesolshin/Documents/GitHub/comparing_HNSW/acid_tests/clients/base_client.py)"
+        }
+      },
+      "summary": {
+        "total_tests": 6,
+        "passed": 5,
+        "partial": 0,
+        "failed": 1,
+        "overall_status": "\u26a0"
+      }
+    }
+  ]
+}

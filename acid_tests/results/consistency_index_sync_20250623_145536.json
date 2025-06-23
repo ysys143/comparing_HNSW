@@ -1,0 +1,146 @@
+{
+  "test": "consistency_index_synchronization",
+  "timestamp": "20250623_145536",
+  "results": [
+    {
+      "database": "pgvector",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2717",
+          "message": "Vector not immediately searchable"
+        },
+        "load_visibility": {
+          "status": "\u2717",
+          "message": "19/20 vectors not searchable",
+          "details": {
+            "visible_count": 1,
+            "missing_count": 19,
+            "avg_delay_ms": 3,
+            "max_delay_ms": 3
+          }
+        },
+        "bulk_visibility": {
+          "status": "\u2713",
+          "message": "All sampled vectors searchable. Avg time: 0.062s"
+        },
+        "search_consistency": {
+          "status": "\u2717",
+          "message": "Search results only 0% consistent"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 1,
+        "partial": 0,
+        "failed": 3,
+        "overall_status": "\u2717"
+      }
+    },
+    {
+      "database": "qdrant",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2717",
+          "message": "Vector not immediately searchable"
+        },
+        "load_visibility": {
+          "status": "\u2713",
+          "message": "All vectors searchable. Avg delay: 0.002s, Max: 0.003s",
+          "details": {
+            "visible_count": 20,
+            "missing_count": 0,
+            "avg_delay_ms": 1,
+            "max_delay_ms": 3
+          }
+        },
+        "bulk_visibility": {
+          "status": "\u2713",
+          "message": "All sampled vectors searchable. Avg time: 0.035s"
+        },
+        "search_consistency": {
+          "status": "\u2717",
+          "message": "Search results only 0% consistent"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 2,
+        "partial": 0,
+        "failed": 2,
+        "overall_status": "\u26a0"
+      }
+    },
+    {
+      "database": "milvus",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2713",
+          "message": "Vector immediately searchable after insert"
+        },
+        "load_visibility": {
+          "status": "\u2713",
+          "message": "All vectors searchable. Avg delay: 3.040s, Max: 3.402s",
+          "details": {
+            "visible_count": 20,
+            "missing_count": 0,
+            "avg_delay_ms": 3039,
+            "max_delay_ms": 3402
+          }
+        },
+        "bulk_visibility": {
+          "status": "\u2713",
+          "message": "All sampled vectors searchable. Avg time: 3.202s"
+        },
+        "search_consistency": {
+          "status": "\u2713",
+          "message": "Search results remain consistent during inserts"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 4,
+        "partial": 0,
+        "failed": 0,
+        "overall_status": "\u2713"
+      }
+    },
+    {
+      "database": "chroma",
+      "test_type": "index_data_synchronization",
+      "tests": {
+        "immediate_visibility": {
+          "status": "\u2713",
+          "message": "Vector immediately searchable after insert"
+        },
+        "load_visibility": {
+          "status": "\u2713",
+          "message": "All vectors searchable. Avg delay: 0.006s, Max: 0.009s",
+          "details": {
+            "visible_count": 20,
+            "missing_count": 0,
+            "avg_delay_ms": 6,
+            "max_delay_ms": 8
+          }
+        },
+        "bulk_visibility": {
+          "status": "\u2713",
+          "message": "All sampled vectors searchable. Avg time: 0.026s"
+        },
+        "search_consistency": {
+          "status": "\u2713",
+          "message": "Search results remain consistent during inserts"
+        }
+      },
+      "summary": {
+        "total_tests": 4,
+        "passed": 4,
+        "partial": 0,
+        "failed": 0,
+        "overall_status": "\u2713"
+      }
+    }
+  ]
+}
